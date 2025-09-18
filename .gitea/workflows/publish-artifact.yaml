@@ -12,15 +12,17 @@ jobs:
       - name: Checkout Code
         uses: actions/checkout@v4
 
-      - name: Set up JDK 21
+      - name: Set up JDK 21 and Maven
         uses: actions/setup-java@v4
         with:
           java-version: '21'
           distribution: 'temurin'
+          cache: 'maven'
 
-      - name: Create Maven settings.xml
+      - name: Configure Maven for Reposilite
         run: |
           SETTINGS_FILE="${{ runner.temp }}/settings.xml"
+          
           echo "<settings xmlns='http://maven.apache.org/SETTINGS/1.0.0'
                 xmlns:xsi='http://www.w3.org/2001/XMLSchema-instance'
                 xsi:schemaLocation='http://maven.apache.org/SETTINGS/1.0.0
@@ -33,12 +35,14 @@ jobs:
                 </server>
               </servers>
             </settings>" > "$SETTINGS_FILE"
-          echo "✅ Maven settings.xml created"
+
+          echo "MAVEN_SETTINGS_PATH=$SETTINGS_FILE" >> $GITHUB_ENV
+          echo "✅ Maven settings.xml created for Reposilite."
 
       - name: Get Version from pom.xml
         id: get_version
         run: |
-          VERSION=$(mvn help:evaluate -Dexpression=project.version -q -DforceStdout)
+          VERSION=$(mvn --settings ${{ env.MAVEN_SETTINGS_PATH }} help:evaluate -Dexpression=project.version -q -DforceStdout)
           echo "Project version is $VERSION"
           echo "VERSION=$VERSION" >> $GITHUB_OUTPUT
 
@@ -46,10 +50,7 @@ jobs:
         run: |
           set -euo pipefail
           VERSION="${{ steps.get_version.outputs.VERSION }}"
-          SETTINGS_FILE="${{ runner.temp }}/settings.xml"
 
-          echo "Deploying version $VERSION to Reposilite..."
-
-          mvn deploy -s "$SETTINGS_FILE"
-
+          echo "Deploying version $VERSION to Reposilite..."  
+          mvn --settings ${{ env.MAVEN_SETTINGS_PATH }} deploy
           echo "✅ Artifact version $VERSION successfully deployed."
