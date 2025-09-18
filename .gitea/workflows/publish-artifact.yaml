@@ -18,6 +18,7 @@ jobs:
           java-version: '21'
           distribution: 'temurin'
           cache: 'maven'
+          overwrite-settings: false
 
       - name: Configure Maven for Reposilite
         run: |
