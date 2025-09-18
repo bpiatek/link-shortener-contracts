@@ -4,15 +4,18 @@
     <modelVersion>4.0.0</modelVersion>
     <groupId>pl.bpiatek</groupId>
     <artifactId>link-shortener-contracts</artifactId>
-    <version>0.0.1-SNAPSHOT</version>
+    <version>0.0.1</version>
     <name>link-shortener-contracts</name>
-    <url/>
 
     <distributionManagement>
         <repository>
             <id>reposilite</id>
             <url> https://repo.bpiatek.pl/releases</url>
         </repository>
+        <snapshotRepository>
+            <id>reposilite</id>
+            <url>https://repo.bpiatek.pl/snapshots</url>
+        </snapshotRepository>
     </distributionManagement>
 
     <pluginRepositories>
