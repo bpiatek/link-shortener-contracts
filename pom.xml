@@ -83,18 +83,17 @@
                       This section maps a Schema Registry subject name to a proto file.
                       The convention is often <topic-name>-value or <topic-name>-key.
                     -->
-<!--                    <subjects>-->
-<!--                        <user-events-value>src/main/proto/user-service/user.proto</user-events-value>-->
-<!--                    </subjects>-->
+                    <subjects>
+                        <link-lifecycle-events-value>src/main/proto/link-service/link_lifecycle_event.proto</link-lifecycle-events-value>
+                    </subjects>
 
                     <!--
                       This section maps the subject name to its schema type.
                       It must be updated to match the subjects defined above.
                     -->
-<!--                    <schemaTypes>-->
-<!--                        <link-events-value>PROTOBUF</link-events-value>-->
-<!--                        <user-events-value>PROTOBUF</user-events-value>-->
-<!--                    </schemaTypes>-->
+                    <schemaTypes>
+                        <link-lifecycle-events-value>PROTOBUF</link-lifecycle-events-value>
+                    </schemaTypes>
                 </configuration>
             </plugin>
         </plugins>

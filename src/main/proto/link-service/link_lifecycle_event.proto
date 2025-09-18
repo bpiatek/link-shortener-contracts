@@ -1,0 +1,67 @@
+syntax = "proto3";
+
+package link_service;
+
+import "google/protobuf/timestamp.proto";
+
+option java_package = "pl.bpiatek.contracts.link";
+option java_outer_classname = "LinkLifecycleEventProto";
+
+message LinkLifecycleEvent {
+  oneof event_payload {
+    LinkCreated link_created = 1;
+    LinkUpdated link_updated = 2;
+    LinkDeleted link_deleted = 3;
+  }
+}
+
+/**
+ * Published when a new short link is successfully created.
+ */
+message LinkCreated {
+  // The unique identifier of the link (e.g., UUID).
+  string link_id = 1;
+
+  // The unique identifier of the user who owns the link.
+  string user_id = 2;
+
+  // The short, randomly generated code for the link (e.g., "aB5xZ1").
+  string short_code = 3;
+
+  // The original, long URL that the short code redirects to.
+  string long_url = 4;
+
+  // The timestamp of when the link was created.
+  google.protobuf.Timestamp created_at = 5;
+}
+
+/**
+ * Published when an existing short link is successfully updated.
+ */
+message LinkUpdated {
+  // The unique identifier of the link that was updated.
+  string link_id = 1;
+
+  // The user who performed the update, for auditing.
+  string user_id = 2;
+
+  // The new destination URL for the short link.
+  string long_url = 3;
+
+  // The timestamp of when the link was updated.
+  google.protobuf.Timestamp updated_at = 4;
+}
+
+/**
+ * Published when a link is successfully deleted.
+ */
+message LinkDeleted {
+  // The unique identifier of the link that was deleted.
+  string link_id = 1;
+
+  // The user who deleted the link, for auditing.
+  string user_id = 2;
+
+  // The timestamp of when the link was deleted.
+  google.protobuf.Timestamp deleted_at = 3;
+}
