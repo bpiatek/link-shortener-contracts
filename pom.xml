@@ -1,0 +1,102 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+    <groupId>pl.bpiatek</groupId>
+    <artifactId>link-shortener-contracts</artifactId>
+    <version>0.0.1-SNAPSHOT</version>
+    <name>link-shortener-contracts</name>
+    <url/>
+
+    <distributionManagement>
+        <repository>
+            <id>reposilite</id>
+            <url> https://repo.bpiatek.pl/releases</url>
+        </repository>
+    </distributionManagement>
+
+    <pluginRepositories>
+        <pluginRepository>
+            <id>confluent</id>
+            <url>https://packages.confluent.io/maven/</url>
+        </pluginRepository>
+    </pluginRepositories>
+
+    <properties>
+        <maven.compiler.source>21</maven.compiler.source>
+        <maven.compiler.target>21</maven.compiler.target>
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+        <protobuf.version>4.31.1</protobuf.version>
+        <confluent.schema-registry-maven-plugin.version>8.0.0</confluent.schema-registry-maven-plugin.version>
+        <schema.registry.url>http://schema-registry.local</schema.registry.url>
+    </properties>
+
+    <dependencies>
+        <dependency>
+            <groupId>com.google.protobuf</groupId>
+            <artifactId>protobuf-java</artifactId>
+            <version>${protobuf.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>com.google.protobuf</groupId>
+            <artifactId>protobuf-java-util</artifactId>
+            <version>${protobuf.version}</version>
+        </dependency>
+    </dependencies>
+
+    <build>
+        <extensions>
+            <extension>
+                <groupId>kr.motd.maven</groupId>
+                <artifactId>os-maven-plugin</artifactId>
+                <version>1.7.1</version>
+            </extension>
+        </extensions>
+
+        <plugins>
+            <plugin>
+                <groupId>org.xolstice.maven.plugins</groupId>
+                <artifactId>protobuf-maven-plugin</artifactId>
+                <version>0.6.1</version>
+                <configuration>
+                    <protocArtifact>com.google.protobuf:protoc:${protobuf.version}:exe:${os.detected.classifier}</protocArtifact>
+                </configuration>
+                <executions>
+                    <execution>
+                        <goals>
+                            <goal>compile</goal>
+                        </goals>
+                    </execution>
+                </executions>
+            </plugin>
+
+            <plugin>
+                <groupId>io.confluent</groupId>
+                <artifactId>kafka-schema-registry-maven-plugin</artifactId>
+                <version>${confluent.schema-registry-maven-plugin.version}</version>
+                <configuration>
+                    <schemaRegistryUrls>
+                        <param>${schema.registry.url}</param>
+                    </schemaRegistryUrls>
+
+                    <!--
+                      This section maps a Schema Registry subject name to a proto file.
+                      The convention is often <topic-name>-value or <topic-name>-key.
+                    -->
+<!--                    <subjects>-->
+<!--                        <user-events-value>src/main/proto/user-service/user.proto</user-events-value>-->
+<!--                    </subjects>-->
+
+                    <!--
+                      This section maps the subject name to its schema type.
+                      It must be updated to match the subjects defined above.
+                    -->
+<!--                    <schemaTypes>-->
+<!--                        <link-events-value>PROTOBUF</link-events-value>-->
+<!--                        <user-events-value>PROTOBUF</user-events-value>-->
+<!--                    </schemaTypes>-->
+                </configuration>
+            </plugin>
+        </plugins>
+    </build>
+</project>

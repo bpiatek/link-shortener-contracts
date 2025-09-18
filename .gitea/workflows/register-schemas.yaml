@@ -1,0 +1,44 @@
+name: Register Kafka Schemas
+
+on:
+  workflow_dispatch:
+    inputs:
+      environment:
+        type: choice
+        description: 'Environment to deploy schemas to'
+        required: true
+        default: 'dev'
+        options:
+          - dev
+          - prod
+
+jobs:
+  register-schemas:
+    name: Register Schemas for ${{ github.event.inputs.environment }}
+    runs-on: java21-build
+
+    steps:
+      - name: Checkout Code
+        uses: actions/checkout@v4
+
+      - name: Set Schema Registry URL based on environment
+        id: set_url
+        run: |
+          URL=""
+          if [ "${{ github.event.inputs.environment }}" == "dev" ]; then
+            URL="http://schema-registry.local"
+          elif [ "${{ github.event.inputs.environment }}" == "prod" ]; then
+            URL="http://your-production-schema-registry-url"
+          fi
+          echo "SCHEMA_REGISTRY_URL=$URL" >> $GITHUB_OUTPUT
+          echo "Schema Registry URL set to $URL"
+
+      - name: Validate Project with Maven
+        run: mvn clean verify
+
+      - name: Register Schema with Maven
+        run: |
+          set -euo pipefail
+          echo "Registering schemas to ${{ steps.set_url.outputs.SCHEMA_REGISTRY_URL }}..."
+          mvn schema-registry:register -Dschema.registry.url=${{ steps.set_url.outputs.SCHEMA_REGISTRY_URL }}
+          echo "✅ Schema registration finished."
