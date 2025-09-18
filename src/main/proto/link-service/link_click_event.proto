@@ -1,0 +1,30 @@
+syntax = "proto3";
+
+package link_service;
+
+import "google/protobuf/timestamp.proto";
+
+option java_package = "pl.bpiatek.contracts.link";
+option java_outer_classname = "LinkClickEventProto";
+
+/**
+ * Published to the "link-clicks" topic every time a short link is successfully
+ * resolved and redirected. This message contains the raw data captured at the
+ * time of the click, which is intended for consumption by the Analytics-Service.
+ */
+message LinkClickEvent {
+  // The short code that was clicked (e.g., "aB5xZ1").
+  // This acts as the primary identifier to correlate the click with a link.
+  string short_code = 1;
+
+  // The precise timestamp of when the redirect occurred.
+  google.protobuf.Timestamp clicked_at = 2;
+
+  // The IP address of the client who made the request.
+  // This will be used for GeoIP enrichment.
+  string ip_address = 3;
+
+  // The User-Agent string from the client's request headers.
+  // This will be used to analyze device, OS, and browser information.
+  string user_agent = 4;
+}

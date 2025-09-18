@@ -88,13 +88,11 @@
                     -->
                     <subjects>
                         <link-lifecycle-events-value>src/main/proto/link-service/link_lifecycle_event.proto</link-lifecycle-events-value>
+                        <link-clicks-value>src/main/proto/link-service/link_click_event.proto</link-clicks-value>
                     </subjects>
 
-                    <!--
-                      This section maps the subject name to its schema type.
-                      It must be updated to match the subjects defined above.
-                    -->
                     <schemaTypes>
+                        <link-lifecycle-events-value>PROTOBUF</link-lifecycle-events-value>
                         <link-lifecycle-events-value>PROTOBUF</link-lifecycle-events-value>
                     </schemaTypes>
                 </configuration>
