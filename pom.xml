@@ -93,7 +93,7 @@
 
                     <schemaTypes>
                         <link-lifecycle-events-value>PROTOBUF</link-lifecycle-events-value>
-                        <link-lifecycle-events-value>PROTOBUF</link-lifecycle-events-value>
+                        <link-clicks-value>PROTOBUF</link-clicks-value>
                     </schemaTypes>
                 </configuration>
             </plugin>
