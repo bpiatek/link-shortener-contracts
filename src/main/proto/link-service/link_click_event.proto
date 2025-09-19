@@ -13,9 +13,9 @@ option java_outer_classname = "LinkClickEventProto";
  * time of the click, which is intended for consumption by the Analytics-Service.
  */
 message LinkClickEvent {
-  // The short code that was clicked (e.g., "aB5xZ1").
+  // The short url that was clicked (e.g., "aB5xZ1").
   // This acts as the primary identifier to correlate the click with a link.
-  string short_code = 1;
+  string short_url = 1;
 
   // The precise timestamp of when the redirect occurred.
   google.protobuf.Timestamp clicked_at = 2;

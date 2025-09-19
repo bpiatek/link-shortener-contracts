@@ -25,10 +25,10 @@ message LinkCreated {
   // The unique identifier of the user who owns the link.
   string user_id = 2;
 
-  // The short, randomly generated code for the link (e.g., "aB5xZ1").
-  string short_code = 3;
+  // The short, randomly generated short url for the link (e.g., "aB5xZ1").
+  string short_url = 3;
 
-  // The original, long URL that the short code redirects to.
+  // The original, long URL that the short url redirects to.
   string long_url = 4;
 
   // The timestamp of when the link was created.
