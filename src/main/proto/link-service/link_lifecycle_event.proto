@@ -50,6 +50,9 @@ message LinkUpdated {
 
   // The timestamp of when the link was updated.
   google.protobuf.Timestamp updated_at = 4;
+
+  // The short, randomly generated short url for the link (e.g., "aB5xZ1").
+  string short_url = 5;
 }
 
 /**
@@ -64,4 +67,7 @@ message LinkDeleted {
 
   // The timestamp of when the link was deleted.
   google.protobuf.Timestamp deleted_at = 3;
+
+  // The short, randomly generated short url for the link (e.g., "aB5xZ1").
+  string short_url = 4;
 }
