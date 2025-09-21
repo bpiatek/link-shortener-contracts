@@ -4,7 +4,7 @@
     <modelVersion>4.0.0</modelVersion>
     <groupId>pl.bpiatek</groupId>
     <artifactId>link-shortener-contracts</artifactId>
-    <version>0.0.2</version>
+    <version>0.0.3</version>
     <name>link-shortener-contracts</name>
 
     <distributionManagement>
@@ -81,7 +81,7 @@
                     <schemaRegistryUrls>
                         <param>${schema.registry.url}</param>
                     </schemaRegistryUrls>
-                    
+
                     <!--
                       This section maps a Schema Registry subject name to a proto file.
                       The convention is often <topic-name>-value or <topic-name>-key.
