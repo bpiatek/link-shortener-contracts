@@ -1,0 +1,47 @@
+syntax = "proto3";
+
+package analytics_service;
+
+import "google/protobuf/timestamp.proto";
+
+option java_package = "pl.bpiatek.contracts.analytics";
+option java_outer_classname = "AnalyticsEventProto";
+
+/**
+ * Published to the "analytics-enriched-events" topic after the analytics-service
+ * has processed a raw LinkClickEvent. This message contains the full, enriched
+ * data set for a single click.
+ */
+message LinkClickEnrichedEvent {
+  // A unique identifier for the click event itself (e.g., UUID).
+  string click_id = 1;
+
+  // The unique identifier of the link that was clicked.
+  string link_id = 2;
+
+  // The unique identifier of the user who owns the link.
+  string user_id = 3;
+
+  // The short url that was clicked.
+  string short_url = 4;
+
+  // The precise timestamp of when the redirect occurred.
+  google.protobuf.Timestamp timestamp = 5;
+
+  // --- GeoIP Enrichment ---
+  // The ISO 3166-1 alpha-2 country code (e.g., "US", "PL", "DE").
+  string country_code = 6;
+
+  // The name of the city.
+  string city_name = 7;
+
+  // --- User-Agent Enrichment ---
+  // The general type of device (e.g., "Desktop", "Phone", "Tablet", "Robot").
+  string device_type = 8;
+
+  // The name of the operating system (e.g., "Windows", "macOS", "iOS", "Android").
+  string os_name = 9;
+
+  // The name of the browser or application (e.g., "Chrome", "Safari", "Firefox").
+  string browser_name = 10;
+}
