@@ -8,7 +8,7 @@ option java_package = "pl.bpiatek.contracts.link";
 option java_outer_classname = "LinkClickEventProto";
 
 /**
- * Published to the "link-clicks" topic every time a short link is successfully
+ * Published to the "link-clicks-events" topic every time a short link is successfully
  * resolved and redirected. This message contains the raw data captured at the
  * time of the click, which is intended for consumption by the Analytics-Service.
  */

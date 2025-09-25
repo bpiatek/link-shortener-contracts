@@ -7,6 +7,9 @@ import "google/protobuf/timestamp.proto";
 option java_package = "pl.bpiatek.contracts.link";
 option java_outer_classname = "LinkLifecycleEventProto";
 
+/*
+ * Published to "link-lifecycle-events" on link creation, deletion or update
+ */
 message LinkLifecycleEvent {
   oneof event_payload {
     LinkCreated link_created = 1;
@@ -53,6 +56,9 @@ message LinkUpdated {
 
   // The short, randomly generated short url for the link (e.g., "aB5xZ1").
   string short_url = 5;
+
+  // Whether the link is currently active or not.
+  bool is_active = 6;
 }
 
 /**
