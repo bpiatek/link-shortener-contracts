@@ -36,6 +36,9 @@ message LinkCreated {
 
   // The timestamp of when the link was created.
   google.protobuf.Timestamp created_at = 5;
+
+  // Whether the link is currently active or not.
+  bool is_active = 6;
 }
 
 /**
