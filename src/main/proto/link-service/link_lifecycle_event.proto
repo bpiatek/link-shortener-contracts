@@ -39,6 +39,9 @@ message LinkCreated {
 
   // Whether the link is currently active or not.
   bool is_active = 6;
+
+  // Title of the link
+  string title = 7;
 }
 
 /**
@@ -62,6 +65,9 @@ message LinkUpdated {
 
   // Whether the link is currently active or not.
   bool is_active = 6;
+
+  // New title of the link after update
+  string title = 7;
 }
 
 /**
