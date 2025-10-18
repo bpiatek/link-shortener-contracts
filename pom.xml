@@ -4,7 +4,7 @@
     <modelVersion>4.0.0</modelVersion>
     <groupId>pl.bpiatek</groupId>
     <artifactId>link-shortener-contracts</artifactId>
-    <version>0.0.8</version>
+    <version>0.0.9</version>
     <name>link-shortener-contracts</name>
 
     <distributionManagement>
@@ -95,8 +95,8 @@
 
                     <schemaTypes>
                         <link-lifecycle-events-value>PROTOBUF</link-lifecycle-events-value>
-                        <link-clicks-event-value>PROTOBUF</link-clicks-event-value>
-                        <analytics-enriched-clicks-events-value>PROTOBUF</analytics-enriched-clicks-events-value>
+                        <link-clicks-events-value>PROTOBUF</link-clicks-events-value>
+                        <analytics-enriched-clicks-event-value>PROTOBUF</analytics-enriched-clicks-event-value>
                         <user-lifecycle-events-value>PROTOBUF</user-lifecycle-events-value>
                     </schemaTypes>
                 </configuration>
