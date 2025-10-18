@@ -90,12 +90,14 @@
                         <link-lifecycle-events-value>src/main/proto/link-service/link_lifecycle_event.proto</link-lifecycle-events-value>
                         <link-clicks-value>src/main/proto/redirect-service/link_click_event.proto</link-clicks-value>
                         <analytics-enriched-clicks-value>src/main/proto/analytics-service/link_click_enriched_event.proto</analytics-enriched-clicks-value>
+                        <user-lifecycle-events-value>src/main/proto/user-service/user_lifecycle_event.proto</user-lifecycle-events-value>
                     </subjects>
 
                     <schemaTypes>
                         <link-lifecycle-events-value>PROTOBUF</link-lifecycle-events-value>
                         <link-clicks-value>PROTOBUF</link-clicks-value>
                         <analytics-enriched-clicks-value>PROTOBUF</analytics-enriched-clicks-value>
+                        <user-lifecycle-events-value>PROTOBUF</user-lifecycle-events-value>
                     </schemaTypes>
                 </configuration>
             </plugin>
