@@ -4,7 +4,7 @@
     <modelVersion>4.0.0</modelVersion>
     <groupId>pl.bpiatek</groupId>
     <artifactId>link-shortener-contracts</artifactId>
-    <version>0.0.7</version>
+    <version>0.0.8</version>
     <name>link-shortener-contracts</name>
 
     <distributionManagement>
@@ -88,15 +88,15 @@
                     -->
                     <subjects>
                         <link-lifecycle-events-value>src/main/proto/link-service/link_lifecycle_event.proto</link-lifecycle-events-value>
-                        <link-clicks-value>src/main/proto/redirect-service/link_click_event.proto</link-clicks-value>
-                        <analytics-enriched-clicks-value>src/main/proto/analytics-service/link_click_enriched_event.proto</analytics-enriched-clicks-value>
+                        <link-clicks-events-value>src/main/proto/redirect-service/link_click_event.proto</link-clicks-events-value>
+                        <analytics-enriched-clicks-event-value>src/main/proto/analytics-service/link_click_enriched_event.proto</analytics-enriched-clicks-event-value>
                         <user-lifecycle-events-value>src/main/proto/user-service/user_lifecycle_event.proto</user-lifecycle-events-value>
                     </subjects>
 
                     <schemaTypes>
                         <link-lifecycle-events-value>PROTOBUF</link-lifecycle-events-value>
-                        <link-clicks-value>PROTOBUF</link-clicks-value>
-                        <analytics-enriched-clicks-value>PROTOBUF</analytics-enriched-clicks-value>
+                        <link-clicks-event-value>PROTOBUF</link-clicks-event-value>
+                        <analytics-enriched-clicks-events-value>PROTOBUF</analytics-enriched-clicks-events-value>
                         <user-lifecycle-events-value>PROTOBUF</user-lifecycle-events-value>
                     </schemaTypes>
                 </configuration>
