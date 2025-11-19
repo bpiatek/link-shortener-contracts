@@ -31,6 +31,6 @@ message UserRegistered {
   // The email of the user
   string email = 2;
 
-  // verification token for user
-  string verification_token = 3;
+  // verification url for user
+  string verification_url = 3;
 }
