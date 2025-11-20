@@ -11,12 +11,12 @@ option java_outer_classname = "UserLifecycleEventProto";
  * Published to "user-lifecycle-events" on user registration, password reset, etc.
  */
 message UserLifecycleEvent {
-  string event_id = 1; // Unique ID for idempotency and tracing
+  string event_id = 1;
   google.protobuf.Timestamp event_timestamp = 2;
 
   oneof event_payload {
     UserRegistered user_registered = 3;
-    // PasswordResetRequested password_reset_requested = 4; // Stub for future
+    PasswordResetRequested password_reset_requested = 4;
     // UserPasswordChanged user_password_changed = 5;      // Stub for future
   }
 }
@@ -33,4 +33,15 @@ message UserRegistered {
 
   // verification url for user
   string verification_url = 3;
+}
+
+message PasswordResetRequested {
+  // The unique identifier of the user (e.g., UUID).
+  string user_id = 1;
+
+  // The email of the user
+  string email = 2;
+
+  // Reset url for user
+  string reset_url = 3;
 }
