@@ -17,7 +17,7 @@ message UserLifecycleEvent {
   oneof event_payload {
     UserRegistered user_registered = 3;
     PasswordResetRequested password_reset_requested = 4;
-    // UserPasswordChanged user_password_changed = 5;      // Stub for future
+    UserPasswordChanged user_password_changed = 5;
   }
 }
 
@@ -35,6 +35,9 @@ message UserRegistered {
   string verification_url = 3;
 }
 
+/**
+ * Published when a user requests a password reset
+ */
 message PasswordResetRequested {
   // The unique identifier of the user (e.g., UUID).
   string user_id = 1;
@@ -44,4 +47,19 @@ message PasswordResetRequested {
 
   // Reset url for user
   string reset_url = 3;
+}
+
+/**
+ * Published when a user changes their password
+ */
+message UserPasswordChanged {
+  // The unique identifier of the user (e.g., UUID).
+  string user_id = 1;
+
+  // The email of the user
+  string email = 2;
+
+  // Optional: Very useful for security alerts
+  // string ip_address = 3;
+  // string user_agent = 4;
 }
