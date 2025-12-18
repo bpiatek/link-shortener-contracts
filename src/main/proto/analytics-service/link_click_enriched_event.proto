@@ -44,4 +44,10 @@ message LinkClickEnrichedEvent {
 
   // The name of the browser or application (e.g., "Chrome", "Safari", "Firefox").
   string browser_name = 10;
+
+  // the latitude of the city
+  string city_latitude = 11;
+
+  // the longitude of the city
+  string city_longitude = 12;
 }
