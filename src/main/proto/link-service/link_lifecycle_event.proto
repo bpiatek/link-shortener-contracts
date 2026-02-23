@@ -11,6 +11,10 @@ option java_outer_classname = "LinkLifecycleEventProto";
  * Published to "link-lifecycle-events" on link creation, deletion or update
  */
 message LinkLifecycleEvent {
+
+  // Unique identifier for this specific event occurrence (e.g., Outbox UUID)
+  string event_id = 4;
+
   oneof event_payload {
     LinkCreated link_created = 1;
     LinkUpdated link_updated = 2;
